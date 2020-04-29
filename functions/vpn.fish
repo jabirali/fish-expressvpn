@@ -26,12 +26,12 @@ function vpn -d 'Interact with ExpressVPN'
 		expressvpn disconnect
 	else if [ "$name" = "auto" ]
 		# Reconnect to previous server.
-		expressvpn disconnect &>/dev/null
+		expressvpn disconnect &> /dev/null
 		expressvpn connect
 	else
 		# Connect to a new server.
 		echo Disconnecting...
-		expressvpn disconnect &>/dev/null
+		expressvpn disconnect &> /dev/null
 		expressvpn connect $name
 	end
 end
