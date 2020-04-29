@@ -9,7 +9,6 @@ you can now use a single command `vpn`, which exposes these functions via `fzf`:
 
 In addition to the special items `auto` and `none`, all ExpressVPN servers 
 can be searched, selected, and then connected to from the `fzf` interface.
-
 Just install `expressvpn` and `fzf`, and then add this plugin via [`fisher`][3]:
 
     fisher add jabirali/fish-expressvpn
