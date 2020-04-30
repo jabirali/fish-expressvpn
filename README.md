@@ -17,14 +17,15 @@ Then type `vpn` when you wish to connect/disconnect from the VPN service.
 
 ## Issues
 
-If you use Snap on Ubuntu 20.04, you may run into issues with internet
-connectivity of those applications when activating ExpressVPN. This is
-because ExpressVPN replaces `/etc/resolv.conf` with a symlink, and the
-AppArmor confinement of Snap applications block them from reading the
-target of this link. Set `$expressvpn_relink` to a non-empty value in 
-your `config.fish` if you want this plugin to automatically change 
-that symlink to a hardlink to work around this issue. Note that 
-this requires you to enter your `sudo` password when connecting.
+On Ubuntu 20.04, you may run into issues with internet connectivity of
+Snap applications when activating ExpressVPN. This is because ExpressVPN
+replaces `/etc/resolv.conf` with a symlink, and the AppArmor confinement
+of Snap applications block them from reading the target of this link. 
+
+Set `$expressvpn_relink` to a non-empty value in  your `config.fish` 
+(e.g. `set expressvpn_relink on`) if you want this plugin to automatically
+change that symlink to a hardlink after connecting. This fixes the above
+issue. Note however that this requires your `sudo` password when connecting.
 
 [1]: https://www.expressvpn.com/
 [2]: https://github.com/junegunn/fzf
