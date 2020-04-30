@@ -22,10 +22,19 @@ Snap applications when activating ExpressVPN. This is because ExpressVPN
 replaces `/etc/resolv.conf` with a symlink, and the AppArmor confinement
 of Snap applications block them from reading the target of this link. 
 
-Set `$expressvpn_relink` to a non-empty value in  your `config.fish` 
-(e.g. `set expressvpn_relink on`) if you want this plugin to automatically
-change that symlink to a hardlink after connecting. This fixes the above
-issue. Note however that this requires your `sudo` password when connecting.
+If you want this plugin to automatically change that symlink to a 
+hardlink, after connecting, which fixes the above issue, set
+`$expressvpn_relink` to a non-empty value in your `config.fish`:
+
+    set expressvpn_relink on
+
+Note however that this requires your `sudo` password when connecting.
+If you get tired of that, you can use `sudo visudo` to edit your
+`/etc/sudoers` file, and add the following line to disable password
+prompts specifically for the command that fixes your `resolv.conf`:
+
+    # ExpressVPN
+    ALL ALL=(ALL) NOPASSWD: /bin/ln -f /var/lib/expressvpn/resolv.conf /etc/resolv.conf
 
 [1]: https://www.expressvpn.com/
 [2]: https://github.com/junegunn/fzf
