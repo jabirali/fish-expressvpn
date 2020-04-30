@@ -28,10 +28,10 @@ hardlink, after connecting, which fixes the above issue, set
 
     set expressvpn_relink on
 
-Note however that this requires your `sudo` password when connecting.
-If you get tired of that, you can use `sudo visudo` to edit your
-`/etc/sudoers` file, and add the following line to disable password
-prompts specifically for the command that fixes your `resolv.conf`:
+This requires your `sudo` password when connecting. If you get tired
+of that, you can use `sudo visudo` to edit your `/etc/sudoers` file,
+and add the following line to disable password prompts for the
+command that relinks your `resolv.conf`:
 
     # ExpressVPN
     ALL ALL=(ALL) NOPASSWD: /bin/ln -f /var/lib/expressvpn/resolv.conf /etc/resolv.conf
