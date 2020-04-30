@@ -31,7 +31,7 @@ function vpn -d 'Interact with ExpressVPN'
 		
 		# Fix Snap/AppArmor issues.
 		if [ -n "$expressvpn_relink" ]
-			sudo ln -f /var/lib/expressvpn/resolv.conf /etc/resolv.conf
+			sudo cp --remove-destination /var/lib/expressvpn/resolv.conf /etc/resolv.conf
 		end
 	else
 		# Connect to a new server.
@@ -41,7 +41,7 @@ function vpn -d 'Interact with ExpressVPN'
 		
 		# Fix Snap/AppArmor issues.
 		if [ -n "$expressvpn_relink" ]
-			sudo ln -f /var/lib/expressvpn/resolv.conf /etc/resolv.conf
+			sudo cp --remove-destination /var/lib/expressvpn/resolv.conf /etc/resolv.conf
 		end
 	end
 end

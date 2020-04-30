@@ -23,7 +23,7 @@ replaces `/etc/resolv.conf` with a symlink, and the AppArmor confinement
 of Snap applications block them from reading the target of this link. 
 
 If you want this plugin to automatically change that symlink to a 
-hardlink, after connecting, which fixes the above issue, set
+hard copy, after connecting, which fixes the above issue, set
 `$expressvpn_relink` to a non-empty value in your `config.fish`:
 
     set expressvpn_relink on
@@ -31,10 +31,10 @@ hardlink, after connecting, which fixes the above issue, set
 This requires your `sudo` password when connecting. If you get tired
 of that, you can use `sudo visudo` to edit your `/etc/sudoers` file,
 and add the following line to disable password prompts for the
-command that relinks your `resolv.conf`:
+command that fixes your `resolv.conf`:
 
     # ExpressVPN
-    ALL ALL=(ALL) NOPASSWD: /bin/ln -f /var/lib/expressvpn/resolv.conf /etc/resolv.conf
+    ALL ALL=(ALL) NOPASSWD: /bin/cp --remove-destination /var/lib/expressvpn/resolv.conf /etc/resolv.conf
 
 [1]: https://www.expressvpn.com/
 [2]: https://github.com/junegunn/fzf
