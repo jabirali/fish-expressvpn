@@ -6,12 +6,18 @@ function vpn -d 'Interact with ExpressVPN'
 	set rec  (expressvpn list all 1>| sed -En -e '1,/^---/ d' -e 's/(.*)\s*Y$/\1/p')
 	set rest (expressvpn list all 1>| sed -En -e '1,/^---/ d' -e 's/(.*)\s+$/\1/p')
 	
-	# Select an ExpressVPN server via FZF.
-	set server (
-		for line in $mine $rec $rest
-			echo $line
-		end | fzf --prompt='ExpressVPN> '
-	) 
+	# Select an ExpressVPN server.
+	if count $argv > /dev/null
+		# Read from command line arguments.
+		set server "$argv"
+	else
+		# Read from interactive selection.
+		set server (
+			for line in $mine $rec $rest
+				echo $line
+			end | fzf --prompt='ExpressVPN> '
+		) 
+	end
 	
 	# If a choice was made, extract name.
 	if [ -n "$server" ]
