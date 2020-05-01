@@ -14,9 +14,11 @@ Just install `expressvpn` and `fzf`, and then add this plugin via [`fisher`][3]:
     fisher add jabirali/fish-expressvpn
 
 Then type `vpn` when you wish to connect/disconnect from the VPN service.
-Like the official `expressvpn` command, you *can* use this non-interactively;
-i.e. typing `vpn none` or `vpn Switzerland` instead of interactively selecting 
-an option should also work fine.
+While the main advantage of this function is that it makes VPN selection
+more interactive, you *can* also use it non-interactively. In other words,
+instead of typing `vpn` and selecting an option, you can type `vpn none`,
+`vpn auto`, or `vpn sweden`, and these would run `expressvpn disconnect`,
+`expressvpn connect`, and `expressvpn connect sweden`, respectively.
 
 ## Issues
 
